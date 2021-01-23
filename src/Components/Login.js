@@ -3,20 +3,31 @@ import { LoginForm } from './LoginForm';
 
 export const Login = () => {
 
-  const userCredentials = {
+  const userAdmin = {
     email: "john@doe.com",
     password: "henlo123"
   }
 
-  const [user, setUser] = useState({ email: "", });
+  const [user, setUser] = useState({ email: "", name: "" });
   const [error, setError] = useState("");
 
-  const Login = details => {
-    console.log(details)
-  }
+  const handleLogin = (userDetails) => {
+    if (
+      userDetails.email === userAdmin.email &&
+      userDetails.password === userAdmin.password
+    ) {
+      console.log(userDetails);
+      setUser({
+        name: userAdmin.name,
+        email: userAdmin.email,
+      });
+    } else {
+      console.log("Forgot password?");
+    }
+  };
 
   const Logout = () => {
-    console.log("Logout");
+    console.log("Logout")
   }
 
   return (
@@ -26,10 +37,9 @@ export const Login = () => {
           <h1>Logged in!</h1>
           <button>Logout</button>
         </div>
-      ) : (<LoginForm />)}
+      ) : (
+          <LoginForm handleLogin={handleLogin} error={error} />
+        )}
     </div>
-  )
-
+  );
 }
-
-//conditional rendering
