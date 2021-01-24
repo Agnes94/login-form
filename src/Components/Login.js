@@ -9,7 +9,7 @@ export const Login = () => {
   }
 
   const [user, setUser] = useState({ email: "", name: "" });
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
 
   const handleLogin = (userDetails) => {
     if (
@@ -22,12 +22,12 @@ export const Login = () => {
         email: userAdmin.email,
       });
     } else {
-      console.log("Forgot password?");
+      setError(true)
     }
   };
 
-  const Logout = () => {
-    console.log("Logout")
+  const handleLogout = () => {
+    setUser({ name: "", email: "" })
   }
 
   return (
@@ -35,10 +35,13 @@ export const Login = () => {
       {(user.email != "") ? (
         <div>
           <h1>Logged in!</h1>
-          <button>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-          <LoginForm handleLogin={handleLogin} error={error} />
+          <div>
+            <LoginForm handleLogin={handleLogin} error={error} />
+            {error && <div>User not found. Don't have an account? <a onClick={() => setUser({ name: "", email: "" })}> Click here.</a> </div>}
+          </div>
         )}
     </div>
   );

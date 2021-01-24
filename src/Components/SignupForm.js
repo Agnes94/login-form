@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const LoginForm = ({ handleLogin, error }) => {
+export const SignupForm = ({ handleLogin, error }) => {
 
   const [userDetails, setUserDetails] = useState({ password: "", email: "" });
 
@@ -12,7 +12,7 @@ export const LoginForm = ({ handleLogin, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <h2>Login</h2>
+        <h2>Create new account</h2>
         {(error != "") ? (<div>{error}</div>) : ""}
         <div>
           <label>Email:</label>
@@ -21,7 +21,7 @@ export const LoginForm = ({ handleLogin, error }) => {
           <input type="password" name="password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
         </div>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Register</button>
     </form>
   )
 }
