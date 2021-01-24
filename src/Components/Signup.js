@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import { LoginForm } from './LoginForm';
+import { SignupForm } from './SignupForm';
 import { useHistory } from 'react-router-dom'
 
-export const Login = () => {
+export const Signup = () => {
 
   const userAdmin = {
-    email: "john@doe.com",
-    password: "henlo123"
+    email: "",
+    password: ""
   }
 
   const [user, setUser] = useState({ email: "", name: "" });
   const [error, setError] = useState(false);
   const history = useHistory();
 
-  const handleLogin = (userDetails) => {
+  const handleSignup = (userDetails) => {
     if (
       userDetails.email === userAdmin.email &&
       userDetails.password === userAdmin.password
@@ -28,24 +28,17 @@ export const Login = () => {
     }
   };
 
-  const handleLogout = () => {
-    setUser({ name: "", email: "" })
-  }
-
   return (
     <div>
       {(user.email != "") ? (
         <div>
           <h1>Logged in!</h1>
-          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
           <div>
-            <LoginForm handleLogin={handleLogin} error={error} />
-            {error && <div> <a onClick={() => history.push("/signup")}>
-              No account? <a href="">Create one here!</a>
-            </a> <div>Forgot password? <a href="" onClick={() => history.push("/resetpassword")}>Click here!</a>
-              </div></div>}
+            <SignupForm handleSignup={handleSignup} error={error} />
+            {error && <div> <a onClick={() => history.push("/login")}>
+            </a></div>}
           </div>
         )}
     </div>

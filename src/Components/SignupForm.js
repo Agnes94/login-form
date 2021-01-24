@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-export const SignupForm = ({ handleLogin, error }) => {
+export const SignupForm = ({ handleSignup, error }) => {
 
   const [userDetails, setUserDetails] = useState({ password: "", email: "" });
 
   const handleSubmit = e => {
     e.preventDefault();
-    handleLogin(userDetails);
+    handleSignup(userDetails);
   }
+
+  const history = useHistory();
 
   return (
     <form onSubmit={handleSubmit}>
@@ -21,7 +24,7 @@ export const SignupForm = ({ handleLogin, error }) => {
           <input type="password" name="password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
         </div>
       </div>
-      <button type="submit">Register</button>
+      <button type="submit" onClick={() => history.push("/login")}>Register</button>
     </form>
   )
 }
