@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom'
-import { Sun } from "react-feather";
+import { User } from "react-feather";
 
 
 const Section = styled.section`
@@ -41,30 +41,23 @@ const Button = styled.button`
   margin: 0.5em;
   border: 2px solid rgb(4,49,98);
   border-radius: 3px;
-  width: 235px;
+  width: 270px;
   height: 40px;
   cursor: pointer;
 `;
 
 const Input = styled.input`
-  width: 50%;
-  padding: 10px 15px;
+  width: 80%;
+  padding: 10px 30px;
   margin-bottom: 20px;
   border: 2px solid rgb(223,223,223);
   border-radius: 5px;
   font-size: 16px;
   background: white;
-  font-family: 'Open Sans', sans-serif;
 `;
 
 const Title = styled.h1`
   text-align: center;
-`;
-
-
-const Label = styled.label`
-  width: 100%;
-  padding: 5px 0;
 `;
 
 const Container = styled.div`
@@ -76,9 +69,6 @@ margin-bottom: 10px;
 
 const WrapperInput = styled.div`
   position: relative;
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 8px 8px;
 `;
 
 const InputIconContainer = styled.div`
@@ -97,8 +87,6 @@ export const LoginForm = ({ handleLogin, error }) => {
     handleLogin(userDetails);
   }
 
-
-
   return (
     <Section>
       <Form onSubmit={handleSubmit}>
@@ -107,13 +95,11 @@ export const LoginForm = ({ handleLogin, error }) => {
           {(error != "") ? (<div>{error}</div>) : ""}
           <div>
             <WrapperInput>
-              <Label> </Label>
               <InputIconContainer>
-                <Sun size={iconSize} />
+                <User size={iconSize} />
               </InputIconContainer>
               <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
             </WrapperInput>
-            <Label> </Label>
             <Input type="password" name="password"
               placeholder="Password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
           </div>
