@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components';
+import { Lock } from "react-feather";
 
 const Section = styled.section`
 display: flex;
@@ -19,16 +20,6 @@ const Form = styled.form`
   border-radius: 6px;
   text-align: center;
   align-items: center;
-/*   @media (min-width: 668px) {
-    width: 80%;
-    padding: 20px 40px;
-  }
-  @media (min-width: 800px) {
-    width: 60%;
-  }
-  @media (min-width: 992px) {
-    width: 50%; */
-  }
 `;
 
 const Button = styled.button`
@@ -37,34 +28,42 @@ const Button = styled.button`
   color: ${props => props.primary ? "white" : "white"};
   font-size: 1em;
   margin: 0.5em;
-  margin-left: 15px;
+  margin-left: 0;
   border: 2px solid rgb(4,49,98);
   border-radius: 3px;
-  width: 240px;
-  height: 40px;
+  width: 100%;
+  height: 50px;
   cursor: pointer;
 `;
 
 const Input = styled.input`
-  width: 90%;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-  margin-right: 30px;
+  width: 100%;
+  padding: 10px 35px;
+  margin-bottom: 5px;
   border: 2px solid rgb(223,223,223);
   border-radius: 5px;
   font-size: 16px;
   background: white;
-  font-family: 'Open Sans', sans-serif;
+  margin-top: 3px;
 `;
 
 const Title = styled.h1`
   text-align: center;
 `;
 
-const Label = styled.label`
-  width: 100%;
-  padding: 5px 0;
+const WrapperInput = styled.div`
+  position: relative;
 `;
+
+const InputIconContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+`;
+
+const iconSize = 20;
 
 export const ResetPassword = (handleReset) => {
 
@@ -84,11 +83,16 @@ export const ResetPassword = (handleReset) => {
         <div>
           <Title>Reset password</Title>
           <div>
-            <Label></Label>
-            <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+            <WrapperInput>
+              <InputIconContainer>
+                <Lock size={iconSize} />
+              </InputIconContainer>
+              <Input type="email" name="email"
+                placeholder="Email" id="email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+            </WrapperInput>
           </div>
+          <Button type="submit" onClick={() => history.push("/login")}>Send request</Button>
         </div>
-        <Button type="submit" onClick={() => history.push("/login")}>Send request</Button>
       </Form>
     </Section>
   )

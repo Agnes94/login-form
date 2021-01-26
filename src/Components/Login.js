@@ -18,6 +18,7 @@ const Button = styled.button`
 
 const Title = styled.h1`
   text-align: center;
+  margin-top: 80%;
 `;
 
 const Section = styled.section`
@@ -26,13 +27,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 height: auto;
-`;
-
-const Container = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
 `;
 
 export const Login = () => {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components';
+import { User } from "react-feather";
+import { Lock } from "react-feather";
 
 const Section = styled.section`
 display: flex;
@@ -19,16 +21,6 @@ const Form = styled.form`
   border-radius: 6px;
   text-align: center;
   align-items: center;
-  @media (min-width: 668px) {
-    width: 80%;
-    padding: 20px 40px;
-  }
-  @media (min-width: 800px) {
-    width: 60%;
-  }
-  @media (min-width: 992px) {
-    width: 50%;
-  }
 `;
 
 const Button = styled.button`
@@ -36,34 +28,44 @@ const Button = styled.button`
   background: ${props => props.primary ? "rgb(4,49,98)" : "rgb(4,49,98)"};
   color: ${props => props.primary ? "white" : "white"};
   font-size: 1em;
-  margin: 0.5em;
   border: 2px solid rgb(4,49,98);
   border-radius: 3px;
-  width: 235px;
-  height: 40px;
+  margin-left: 0px;
+  width: 100%;
+  height: 50px;
   cursor: pointer;
+  margin-top: 10px;
 `;
 
 const Input = styled.input`
-  width: 50%;
-  padding: 10px 15px;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px 35px;
+  margin-bottom: 5px;
   border: 2px solid rgb(223,223,223);
   border-radius: 5px;
   font-size: 16px;
   background: white;
-  font-family: 'Open Sans', sans-serif;
+  margin-top: 3px;
 `;
+
 
 const Title = styled.h1`
   text-align: center;
 `;
 
-
-const Label = styled.label`
-  width: 100%;
-  padding: 5px 0;
+const WrapperInput = styled.div`
+  position: relative;
 `;
+
+const InputIconContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+`;
+
+const iconSize = 20;
 
 export const SignupForm = ({ handleSignup, error }) => {
 
@@ -83,13 +85,22 @@ export const SignupForm = ({ handleSignup, error }) => {
           <Title>Create new account</Title>
           {(error != "") ? (<div>{error}</div>) : ""}
           <div>
-            <Label></Label>
-            <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
-            <Label></Label>
-            <Input type="password" name="password" placeholder="Password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
+            <WrapperInput>
+              <InputIconContainer>
+                <User size={iconSize} />
+              </InputIconContainer>
+              <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+            </WrapperInput>
+            <WrapperInput>
+              <InputIconContainer>
+                <Lock size={iconSize} />
+              </InputIconContainer>
+              <Input type="password" name="password"
+                placeholder="Password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
+            </WrapperInput>
           </div>
+          <Button type="submit" onClick={() => history.push("/login")}>Register</Button>
         </div>
-        <Button type="submit" onClick={() => history.push("/login")}>Register</Button>
       </Form>
     </Section>
   )
