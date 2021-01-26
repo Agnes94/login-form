@@ -1,6 +1,39 @@
 import React, { useState } from 'react'
 import { LoginForm } from './LoginForm';
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components';
+
+const Button = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${props => props.primary ? "rgb(4,49,98)" : "rgb(4,49,98)"};
+  color: ${props => props.primary ? "white" : "white"};
+  font-size: 1em;
+  margin: 0.5em;
+  border: 2px solid rgb(4,49,98);
+  border-radius: 3px;
+  width: 235px;
+  height: 60px;
+  cursor: pointer;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+`;
+
+const Section = styled.section`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: auto;
+`;
+
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+`;
 
 export const Login = () => {
 
@@ -33,21 +66,17 @@ export const Login = () => {
   }
 
   return (
-    <div>
+    <Section>
       {(user.email != "") ? (
         <div>
-          <h1>Logged in!</h1>
-          <button onClick={handleLogout}>Logout</button>
+          <Title>Logged in!</Title>
+          <Button onClick={handleLogout}>Logout</Button>
         </div>
       ) : (
           <div>
-            <LoginForm handleLogin={handleLogin} error={error} />
-            {error && <div> <a onClick={() => history.push("/signup")}>
-              No account? <a href="">Create one here!</a>
-            </a> <div>Forgot password? <a href="" onClick={() => history.push("/resetpassword")}>Click here!</a>
-              </div></div>}
+            < LoginForm handleLogin={handleLogin} error={error} />
           </div>
         )}
-    </div>
+    </Section>
   );
 }
