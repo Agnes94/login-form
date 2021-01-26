@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom'
+import { Sun } from "react-feather";
+
 
 const Section = styled.section`
 display: flex;
@@ -72,6 +74,19 @@ text-decoration: none;
 margin-bottom: 10px;
 `;
 
+const WrapperInput = styled.div`
+  position: relative;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 8px 8px;
+`;
+
+const InputIconContainer = styled.div`
+  position: absolute;
+`;
+
+const iconSize = 20;
+
 export const LoginForm = ({ handleLogin, error }) => {
 
   const [userDetails, setUserDetails] = useState({ password: "", email: "" });
@@ -82,6 +97,8 @@ export const LoginForm = ({ handleLogin, error }) => {
     handleLogin(userDetails);
   }
 
+
+
   return (
     <Section>
       <Form onSubmit={handleSubmit}>
@@ -89,8 +106,13 @@ export const LoginForm = ({ handleLogin, error }) => {
           <Title>Login</Title>
           {(error != "") ? (<div>{error}</div>) : ""}
           <div>
-            <Label> </Label>
-            <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+            <WrapperInput>
+              <Label> </Label>
+              <InputIconContainer>
+                <Sun size={iconSize} />
+              </InputIconContainer>
+              <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+            </WrapperInput>
             <Label> </Label>
             <Input type="password" name="password"
               placeholder="Password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
