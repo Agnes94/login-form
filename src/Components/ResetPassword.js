@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Lock } from "react-feather";
 
 const Section = styled.section`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
 const Form = styled.form`
@@ -23,9 +23,8 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${props => props.primary ? "rgb(4,49,98)" : "rgb(4,49,98)"};
-  color: ${props => props.primary ? "white" : "white"};
+  background: rgb(4,49,98);
+  color: white;
   font-size: 1em;
   margin: 0.5em;
   margin-left: 0;

@@ -45,7 +45,6 @@ export const Login = () => {
       userDetails.email === userAdmin.email &&
       userDetails.password === userAdmin.password
     ) {
-      console.log(userDetails);
       setUser({
         name: userAdmin.name,
         email: userAdmin.email,

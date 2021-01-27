@@ -5,10 +5,10 @@ import { User } from "react-feather";
 import { Lock } from "react-feather";
 
 const Section = styled.section`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
 const Form = styled.form`
@@ -24,9 +24,8 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${props => props.primary ? "rgb(4,49,98)" : "rgb(4,49,98)"};
-  color: ${props => props.primary ? "white" : "white"};
+  background: rgb(4,49,98);
+  color: white;
   font-size: 1em;
   border: 2px solid rgb(4,49,98);
   border-radius: 3px;
@@ -89,14 +88,14 @@ export const SignupForm = ({ handleSignup, error }) => {
               <InputIconContainer>
                 <User size={iconSize} />
               </InputIconContainer>
-              <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+              <Input type="text" name="name" placeholder="Email" minlength="2" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
             </WrapperInput>
             <WrapperInput>
               <InputIconContainer>
                 <Lock size={iconSize} />
               </InputIconContainer>
               <Input type="password" name="password"
-                placeholder="Password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
+                placeholder="Password" id="password" minlength="2" required onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
             </WrapperInput>
           </div>
           <Button type="submit" onClick={() => history.push("/login")}>Register</Button>

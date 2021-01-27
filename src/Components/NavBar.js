@@ -5,17 +5,17 @@ import logout from 'Assets/logout.svg'
 
 
 const Nav = styled.nav`
-background: rgb(4,49,98);
-height: 60px;
-display: flex;
-flex-direction: row;
-justify-content: flex-end; 
-padding-right: 20px;
+  background: rgb(4,49,98);
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; 
+  padding-right: 20px;
 `;
 
 const Container = styled.div`
-margin-top: 20px;
-padding-right: 20px;
+  margin-top: 20px;
+  padding-right: 20px;
 `;
 
 export const NavBar = () => {

@@ -5,10 +5,10 @@ import { User } from "react-feather";
 import { Lock } from "react-feather";
 
 const Section = styled.section`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Form = styled.form`
@@ -25,9 +25,8 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${props => props.primary ? "rgb(4,49,98)" : "rgb(4,49,98)"};
-  color: ${props => props.primary ? "white" : "white"};
+  background: rgb(4,49,98);
+  color: white;
   font-size: 1em;
   border: 2px solid rgb(4,49,98);
   border-radius: 3px;
@@ -50,6 +49,13 @@ const Input = styled.input`
 
 const Title = styled.h1`
   text-align: center;
+  font-size: 30px;
+`;
+
+const SubTitle = styled.h2`
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer; 
 `;
 
 const Container = styled.div`
@@ -68,6 +74,11 @@ const InputIconContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 8px;
+`;
+
+const StyledLink = styled.a`
+  color: blue;
+  text-decoration: rgb(242,242,242);
 `;
 
 const iconSize = 20;
@@ -93,13 +104,13 @@ export const LoginForm = ({ handleLogin, error }) => {
               <InputIconContainer>
                 <User size={iconSize} />
               </InputIconContainer>
-              <Input type="text" name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
+              <Input type="text" required name="name" placeholder="Email" onChange={e => setUserDetails({ ...userDetails, email: e.target.value })} value={userDetails.email} />
             </WrapperInput>
             <WrapperInput>
               <InputIconContainer>
                 <Lock size={iconSize} />
               </InputIconContainer>
-              <Input type="password" name="password"
+              <Input required type="password" name="password"
                 placeholder="Password" id="password" onChange={e => setUserDetails({ ...userDetails, password: e.target.value })} value={userDetails.password} />
             </WrapperInput>
           </div>
@@ -107,8 +118,8 @@ export const LoginForm = ({ handleLogin, error }) => {
         <Button type="submit">Login</Button>
       </Form>
       {error && <Container>
-        <a onClick={() => history.push("/signup")}> No account? <a href="">Create one here!</a></a>
-        <a href="" onClick={() => history.push("/resetpassword")}>Forgot password?</a>
+        <SubTitle onClick={() => history.push("/resetpassword")}>Forgot password?</SubTitle>
+        <span onClick={() => history.push("/signup")}> No account? <StyledLink href="">Create one here!</StyledLink></span>
       </Container>}
     </Section>
   )

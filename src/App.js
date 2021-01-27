@@ -6,7 +6,6 @@ import { Signup } from './Components/Signup';
 import { NavBar } from "Components/NavBar";
 import styled from "styled-components";
 
-
 const SiteWrapper = styled.div`
   display: flex;
   min-height: 100vh;
@@ -16,7 +15,6 @@ const SiteWrapper = styled.div`
 const SiteContent = styled.div`
   flex: 1;
 `;
-
 
 export const App = () => {
   return (
